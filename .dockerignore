@@ -1,0 +1,7 @@
+# Avoid including unnecessary files => reduces the build time & can reduce the image size
+# Avoid adding the local dependencies to the image, they will be installed based on package-lock.json
+/node_modules
+/dist
+
+.git
+.env

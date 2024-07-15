@@ -1,3 +1,38 @@
+## Docker
+##### Building
+- development
+```bash
+$ docker build -f Dockerfile.dev -t {repository:tag} .
+```
+- production
+```bash
+$ docker build -t {repository:tag} .
+```
+
+Reducing the build time :
+- Create a .dockerignore file - Avoid including unnecessary files
+- Optimize the build cache - Order matters - a change causes a rebuild for the following steps
+
+##### Running 
+
+```bash
+$ docker run --env TOKEN={token} -p {container-port}:{local-port} {repository:tag}
+```
+
+##### Networking
+ - Docker isolates the container network from the host network, using linux network namespaces
+```bash
+$ docker run -p {container-port}:{local-port} {repository:tag}
+```
+
+##### Security 
+- Avoid root permissions
+- Use secure container registries
+
+##### Image size
+- Avoid including unnecessary files
+- Use an appropiate base image
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>

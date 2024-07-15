@@ -1,0 +1,18 @@
+ARG NODE_VERSION=20
+
+FROM node:${NODE_VERSION}-alpine AS development
+
+ENV NODE_ENV=dev
+ENV TOKEN=""
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+ENTRYPOINT ["npm", "run", "start:dev"]
