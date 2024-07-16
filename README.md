@@ -16,13 +16,13 @@ Reducing the build time :
 ##### Running 
 
 ```bash
-$ docker run --env TOKEN={token} -p {container-port}:{local-port} {repository:tag}
+$ docker run --env TOKEN={token} -p {local-port}:{container-port} {repository:tag}
 ```
 
 ##### Networking
  - Docker isolates the container network from the host network, using linux network namespaces
 ```bash
-$ docker run -p {container-port}:{local-port} {repository:tag}
+$ docker run -p {local-port}:{container-port} {repository:tag}
 ```
 
 ##### Security 
@@ -60,6 +60,7 @@ $ docker run -p {container-port}:{local-port} {repository:tag}
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Simple app which returns a list of courses for authorized users by navigating to /api/courses
 
 ## Installation
 

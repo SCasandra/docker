@@ -5,6 +5,7 @@ FROM node:${NODE_VERSION}-alpine AS production
 
 # Run time used vars
 ENV NODE_ENV=prod
+# Token used to check authorized users in order to access /api/courses - See auth.guard.ts
 ENV TOKEN=""
 
 # Set the home directory for the custom user
