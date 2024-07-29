@@ -1,4 +1,36 @@
 ## Docker
+##### Network
+Creating a custom network:
+```bash
+docker network create --driver bridge my-network
+```
+Inspecting the network configurations:
+```bash
+docker network ls
+docker inspect my-network
+```
+Connecting containers to a custom network:
+```bash
+docker build -t demo-api:1
+<!-- TOKEN=t123 - HARDCODED IN ANGULAR ENV FILE -->
+docker run  --env TOKEN=t123 --network my-network --name course-api demo-api:1 - domain name = course-api
+docker build -t demo-client:1
+docker run --network my-network --name course-client demo-client:1
+```
+
+docker ps - lists running containers  (-a - all)
+docker stop  ID, docker rm ID
+docker inspect container_ID => find the ip address
+##### Persistency
+```bash
+docker run -v vol:/home/customuser/app/tmp --env TOKEN=t123 --network my-network --name course-api -p 8088:8080 demo-api:1
+docker run --env TOKEN=t123 --mount type=bind,source=C:\Users\User\Desktop\workspace\docker-client-server\course-api\tmp\courses.json,target=/home/customuser/app/tmp/courses.json -p 8088:8080 demo-api:1 
+```
+
+```bash
+docker run --env TOKEN=t123 --network my-network --name course-api -p 8088:8080 demo-api:1
+docker run --network my-network --name course-client -p 4201:4200 demo-client:1
+```
 ##### Building
 - development
 ```bash
